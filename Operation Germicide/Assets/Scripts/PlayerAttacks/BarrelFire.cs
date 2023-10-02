@@ -35,7 +35,7 @@ public class BarrelFire : MonoBehaviour
     void FireBullet()
     {
         BulletInfo clone = Instantiate(bulletPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation).GetComponent<BulletInfo>();
-        clone.Setup(this.gameObject, 0, bulletSpeed, 5f, true, null);
+        clone.Setup(this.gameObject, 10, bulletSpeed, 5f, true, null);
     }
 
 }

@@ -27,9 +27,29 @@ public class BulletInfo : MonoBehaviour
         this.transform.Translate(Vector3.down * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collition encountered");
         // if collision has an enemy type, damage it
+
+        if (destroyOnHit)
+        {
+            hitsLeft -= 1;
+            if (hitsLeft <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Enemy curr;
+        if (!collision.gameObject.TryGetComponent<Enemy>(out curr))
+        {
+            return;
+        }
+        curr.TakeDamage(damage);
 
         if (destroyOnHit)
         {

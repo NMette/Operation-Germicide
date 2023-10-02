@@ -351,6 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 657445592}
   - component: {fileID: 657445593}
+  - component: {fileID: 657445594}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -366,13 +367,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657445591}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.58, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.58, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1794630524}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &657445593
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -425,6 +426,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &657445594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657445591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7603ef58801f5d40a66742ea547677e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6139563415537256344, guid: 608e916ed8f5f894d90fb6709061a4ac, type: 3}
+  cooldown: 0.1
+  bulletSpeed: 10
 --- !u!1 &1794630519
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +452,7 @@ GameObject:
   - component: {fileID: 1794630524}
   - component: {fileID: 1794630523}
   - component: {fileID: 1794630522}
+  - component: {fileID: 1794630525}
   - component: {fileID: 1794630521}
   - component: {fileID: 1794630520}
   m_Layer: 0
@@ -591,6 +608,19 @@ Transform:
   - {fileID: 657445592}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794630525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794630519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66db21d057ea6241a9476ae22a40da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1794630520}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

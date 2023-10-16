@@ -12,9 +12,12 @@ public class BarrelFire : MonoBehaviour
 
     [SerializeField] private float bulletSpeed;
 
+    private GameObject characterBody;
+
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        characterBody = FindFirstObjectByType<PlayerType>().gameObject;
         gunHeat = 0;
     }
 
@@ -35,7 +38,7 @@ public class BarrelFire : MonoBehaviour
     void FireBullet()
     {
         BulletInfo clone = Instantiate(bulletPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation).GetComponent<BulletInfo>();
-        clone.Setup(this.gameObject, 10, bulletSpeed, 5f, true, null);
+        clone.Setup(characterBody, 10, bulletSpeed, 5f, true, null);
     }
 
 }

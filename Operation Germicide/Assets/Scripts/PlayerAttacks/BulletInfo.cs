@@ -1,11 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.VFX;
 
 public class BulletInfo : MonoBehaviour
 {
 
     private GameObject spawner;
+    private String spawnerType;
 
     private int damage;
     
@@ -17,6 +22,8 @@ public class BulletInfo : MonoBehaviour
 
     private string[] effects;
 
+    private bool setupRan = false;
+
     void Start()
     {
         Destroy(gameObject, timeToDestroy);
@@ -27,29 +34,23 @@ public class BulletInfo : MonoBehaviour
         this.transform.Translate(Vector3.down * speed * Time.deltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collition encountered");
-        // if collision has an enemy type, damage it
-
-        if (destroyOnHit)
-        {
-            hitsLeft -= 1;
-            if (hitsLeft <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy curr;
-        if (!collision.gameObject.TryGetComponent<Enemy>(out curr))
+        if (!setupRan)
         {
             return;
         }
-        curr.TakeDamage(damage);
+        PlayerType curr = null; EnemyType curr2 = null;
+        if (collision.gameObject.TryGetComponent<PlayerType>(out curr) && !spawnerType.Equals("PlayerType"))
+        {
+            curr.TakeDamage(damage);
+        } else if (collision.gameObject.TryGetComponent<EnemyType>(out curr2) && !spawnerType.Equals("EnemyType"))
+        {
+            curr2.TakeDamage(damage);
+        } else
+        {
+            return;
+        }
 
         if (destroyOnHit)
         {
@@ -64,12 +65,22 @@ public class BulletInfo : MonoBehaviour
     public void Setup(GameObject spawner, int damage, float speed, float timeToDestroy, bool destroyOnHit, string[] effects, int hitsLeft=1)
     {
         this.spawner = spawner;
+        PlayerType test;
+        EnemyType test2;
+        if (spawner.TryGetComponent<PlayerType>(out test))
+        {
+            this.spawnerType = "PlayerType";
+        } else if (spawner.TryGetComponent<EnemyType>(out test2))
+        {
+            this.spawnerType = "EnemyType";
+        }
         this.damage = damage;
         this.speed = speed;
         this.timeToDestroy = timeToDestroy;
         this.hitsLeft = hitsLeft;
         this.destroyOnHit = destroyOnHit;
         this.effects = effects;
+        this.setupRan = true;
     }
 
     public GameObject GetSpawner() { return spawner; }

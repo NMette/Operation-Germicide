@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 450344325}
   - component: {fileID: 450344324}
   - component: {fileID: 450344327}
+  - component: {fileID: 450344328}
+  - component: {fileID: 450344329}
   - component: {fileID: 450344322}
   - component: {fileID: 450344326}
   m_Layer: 0
@@ -299,6 +301,31 @@ MonoBehaviour:
   baseSpeed: 0
   speed: 0
   bacteriaModifiers: []
+--- !u!114 &450344328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450344321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae7c75e8603f442abf2599e7e47c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 0.01
+--- !u!114 &450344329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450344321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72e726dc6c2709448056acb26b0932f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

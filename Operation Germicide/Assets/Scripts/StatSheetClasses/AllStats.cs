@@ -13,6 +13,9 @@ public abstract class AllStats : MonoBehaviour
     public float baseSpeed;
     public float speed;
 
+    public int damageResist;
+    public int damageNegate;
+
     public string[] bacteriaModifiers;
 
     public void TakeDamage(int damage)

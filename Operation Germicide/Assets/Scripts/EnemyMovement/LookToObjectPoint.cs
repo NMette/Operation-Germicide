@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointToNextPlayerLocation : MonoBehaviour
+public class LookToObjectPoint : MonoBehaviour
 {
 
     [SerializeField] private float rotateSpeed;
@@ -11,13 +11,13 @@ public class PointToNextPlayerLocation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = objectToLookAt.GetNextLocation() - transform.position;
+        Vector3 direction = objectToLookAt.GetLocation() - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time * rotateSpeed);

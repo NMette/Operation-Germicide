@@ -9,12 +9,6 @@ public class WASDMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Vector3 distance;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

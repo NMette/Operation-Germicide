@@ -5,9 +5,16 @@ using UnityEngine;
 public class WASDMovement : MonoBehaviour
 {
 
+    private AllStats stats;
+
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Vector3 distance;
+
+    private void Start()
+    {
+        stats = GetComponent<AllStats>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -17,7 +24,7 @@ public class WASDMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.AddForce(distance * speed);
+        rb.AddForce(distance * stats.speed);
     }
 
 }

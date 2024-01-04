@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WASDMovement : MonoBehaviour
+public class WASDMovement : BaseMovement
 {
 
     private AllStats stats;

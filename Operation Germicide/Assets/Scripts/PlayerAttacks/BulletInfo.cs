@@ -6,13 +6,11 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.VFX;
 
-public class BulletInfo : MonoBehaviour
+public class BulletInfo : Damager
 {
 
     private GameObject spawner;
     private String spawnerType;
-
-    private int damage;
     
     private int hitsLeft;
     private float timeToDestroy;
@@ -43,10 +41,10 @@ public class BulletInfo : MonoBehaviour
         PlayerType curr = null; EnemyType curr2 = null;
         if (collision.gameObject.TryGetComponent<PlayerType>(out curr) && !spawnerType.Equals("PlayerType"))
         {
-            curr.TakeDamage(damage);
+            curr.TakeDamage(damage, this);
         } else if (collision.gameObject.TryGetComponent<EnemyType>(out curr2) && !spawnerType.Equals("EnemyType"))
         {
-            curr2.TakeDamage(damage);
+            curr2.TakeDamage(damage, this);
         } else
         {
             return;
@@ -84,7 +82,6 @@ public class BulletInfo : MonoBehaviour
     }
 
     public GameObject GetSpawner() { return spawner; }
-    public int GetDamage() { return damage; }
     public int GetHitsLeft() { return hitsLeft; }
     public float GetSpeed() { return speed; }
     public string[] GetEffects() {  return effects; }

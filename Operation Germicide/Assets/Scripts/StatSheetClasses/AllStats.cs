@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class AllStats : MonoBehaviour
 {
 
+    // Stats
     public int health;
     public int maxHealth;
     public int baseMaxHealth;
@@ -16,16 +17,60 @@ public abstract class AllStats : MonoBehaviour
     public int damageResist;
     public int damageNegate;
 
+    // Inventory
     public string[] bacteriaModifiers;
 
-    public void TakeDamage(int damage)
+    // Movement
+    protected BaseMovement currMovement;
+
+    // Attack
+    protected BaseAttack currAttack;
+
+    // Focus Point
+    protected BaseFocusPoint currFocus;
+
+    public void TakeDamage(int damage, Damager source)
     {
         health -= damage;
         if (health <= 0f)
         {
-            // kill
-            Destroy(gameObject); // This is temporary. Will probably implement a death manager to apply effects
+            Die(null);
         }
+    }
+
+    public void Die(AllStats killer)
+    {
+        Destroy(gameObject);
+    }
+
+    private void SetMovement(BaseMovement newMovement)
+    {
+        if (currMovement != null)
+        {
+            currMovement.enabled = false;
+        }
+        currMovement = newMovement;
+        currMovement.enabled = true;
+    }
+
+    private void SetAttack(BaseAttack newAttack)
+    {
+        if (currAttack != null)
+        {
+            currAttack.enabled = false;
+        }
+        currAttack = newAttack;
+        currAttack.enabled = true;
+    }
+
+    private void SetFocus(BaseFocusPoint newFocus)
+    {
+        if (currFocus != null)
+        {
+            currFocus.enabled = false;
+        }
+        currFocus = newFocus;
+        currFocus.enabled = true;
     }
 
 }

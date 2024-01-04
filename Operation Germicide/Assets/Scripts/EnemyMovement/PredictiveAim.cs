@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,18 +8,18 @@ public class PredictiveAim : MonoBehaviour
 {
 
     [SerializeField] private Rigidbody2D objectToLookAt;
-    [SerializeField] private float rotateSpeed;
+    [SerializeField] private float rotateTime;
 
     // Update is called once per frame
     void Update()
     {
         if (!GetPredicted(objectToLookAt.transform.position, transform.position, objectToLookAt.velocity, 10, out Vector2 direction))
         {
-            // Do something else to change the rotation, but not sure what yet
+            direction = (Vector2)objectToLookAt.transform.position + objectToLookAt.velocity;
         }
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time / rotateSpeed);
+        float target = Mathf.SmoothDampAngle(transform.eulerAngles.z, angle, ref rotateTime, 0.1f);
+        transform.rotation = Quaternion.Euler(0, 0, target);
     }
 
     bool GetPredicted(Vector2 a, Vector2 b, Vector2 vA, float sB, out Vector2 result)

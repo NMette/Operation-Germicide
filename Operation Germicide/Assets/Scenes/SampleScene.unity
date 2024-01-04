@@ -1080,7 +1080,6 @@ GameObject:
   - component: {fileID: 2037201262}
   - component: {fileID: 2037201261}
   - component: {fileID: 2037201260}
-  - component: {fileID: 2037201259}
   - component: {fileID: 2037201263}
   - component: {fileID: 2037201258}
   - component: {fileID: 2037201257}
@@ -1090,7 +1089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &2037201257
 Rigidbody2D:
   serializedVersion: 4
@@ -1164,20 +1163,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2037201259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037201256}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c051004b307ef4e8b1b6d75242950d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 0.01
-  objectToLookAt: {fileID: 1794630527}
 --- !u!114 &2037201260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,7 +1263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91582af2d21c5e448b5496064365ac35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0.01
+  rotateSpeed: 100
   objectToLookAt: {fileID: 1794630527}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

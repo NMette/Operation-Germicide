@@ -20,6 +20,11 @@ public class PointToNextPlayerLocation : MonoBehaviour
         Vector3 direction = objectToLookAt.GetNextLocation() - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time * rotateSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time / rotateSpeed);
+    }
+
+    Vector3 getNextLocation()
+    {
+        return objectToLookAt.GetNextLocation() - transform.position;
     }
 }

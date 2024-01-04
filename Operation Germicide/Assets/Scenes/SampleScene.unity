@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToLookAt: {fileID: 1794630520}
-  rotateSpeed: 100
+  rotateTime: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +651,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6139563415537256344, guid: 608e916ed8f5f894d90fb6709061a4ac, type: 3}
   cooldown: 0.1
   bulletSpeed: 10
+  owner: {fileID: 0}
 --- !u!1 &1539580865
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +752,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6139563415537256344, guid: 608e916ed8f5f894d90fb6709061a4ac, type: 3}
   cooldown: 3
   bulletSpeed: 10
-  characterBody: {fileID: 2037201256}
+  owner: {fileID: 0}
 --- !u!1 &1794630519
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,6 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf4fdf3e7f9660449fdc1469caa751d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 1794630526}
   speed: 7
   rb: {fileID: 1794630520}
   distance: {x: 0, y: 0, z: 0}
@@ -1068,7 +1070,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6139563415537256344, guid: 608e916ed8f5f894d90fb6709061a4ac, type: 3}
   cooldown: 3
   bulletSpeed: 10
-  characterBody: {fileID: 450344321}
+  owner: {fileID: 450344327}
 --- !u!1 &2037201256
 GameObject:
   m_ObjectHideFlags: 0

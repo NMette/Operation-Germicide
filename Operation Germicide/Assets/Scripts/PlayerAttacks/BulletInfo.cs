@@ -8,31 +8,17 @@ using UnityEngine.VFX;
 
 public class BulletInfo : Damager
 {
-
-    private GameObject spawner;
-    private String spawnerType;
-    
-    private int hitsLeft;
-    private float timeToDestroy;
-    private bool destroyOnHit;
-
-    private float speed;
-
-    private string[] effects;
-
-    private bool setupRan = false;
-
-    void Start()
-    {
-        Destroy(gameObject, timeToDestroy);
-    }
-
-    void Update()
+    protected override void Movement()
     {
         this.transform.Translate(Vector3.down * speed * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    protected override void PhysicsMovement()
+    {
+        
+    }
+
+    /*void OnTriggerEnter2D(Collider2D collision)
     {
         if (!setupRan)
         {
@@ -58,32 +44,22 @@ public class BulletInfo : Damager
                 Destroy(gameObject);
             }
         }
-    }
+    }*/
 
-    public void Setup(GameObject spawner, int damage, float speed, float timeToDestroy, bool destroyOnHit, string[] effects, int hitsLeft=1)
+    protected override void DamageEntity(AllStats entity)
     {
-        this.spawner = spawner;
-        PlayerType test;
-        EnemyType test2;
-        if (spawner.TryGetComponent<PlayerType>(out test))
-        {
-            this.spawnerType = "PlayerType";
-        } else if (spawner.TryGetComponent<EnemyType>(out test2))
-        {
-            this.spawnerType = "EnemyType";
-        }
-        this.damage = damage;
-        this.speed = speed;
-        this.timeToDestroy = timeToDestroy;
-        this.hitsLeft = hitsLeft;
-        this.destroyOnHit = destroyOnHit;
-        this.effects = effects;
-        this.setupRan = true;
+        entity.TakeDamage(damage, this);
     }
 
-    public GameObject GetSpawner() { return spawner; }
-    public int GetHitsLeft() { return hitsLeft; }
-    public float GetSpeed() { return speed; }
-    public string[] GetEffects() {  return effects; }
-
+    protected override void CheckDestruct()
+    {
+        if (destroyOnHit)
+        {
+            hitsLeft -= 1;
+            if (hitsLeft <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

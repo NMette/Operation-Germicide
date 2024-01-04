@@ -3,21 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class BarrelFire : MonoBehaviour
+public class BarrelFire : BaseAttack
 {
-    [SerializeField] private GameObject bulletPrefab;
-
-    [SerializeField] private float cooldown;
-    private float gunHeat;
-
-    [SerializeField] private float bulletSpeed;
-
-    private GameObject characterBody;
 
     // Start is called before the first frame update
     void Start()
     {
-        characterBody = FindFirstObjectByType<PlayerType>().gameObject;
+        owner = FindFirstObjectByType<PlayerType>();
         gunHeat = 0;
     }
 
@@ -31,14 +23,13 @@ public class BarrelFire : MonoBehaviour
         if (Input.GetMouseButton(0) && gunHeat <= 0f)
         {
             gunHeat = cooldown;
-            FireBullet();
+            Fire();
         }
     }
 
-    void FireBullet()
+    protected override void Fire()
     {
         BulletInfo clone = Instantiate(bulletPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation).GetComponent<BulletInfo>();
-        clone.Setup(characterBody, 10, bulletSpeed, 5f, true, null);
+        clone.Setup(owner, 10, bulletSpeed, 5f, true, null);
     }
-
 }

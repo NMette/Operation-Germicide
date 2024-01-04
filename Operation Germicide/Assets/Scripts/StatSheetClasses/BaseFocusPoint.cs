@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseFocusPoint : MonoBehaviour
+public abstract class BaseFocusPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] protected Rigidbody2D objectToLookAt;
+    [SerializeField] protected float rotateTime;
+
 }

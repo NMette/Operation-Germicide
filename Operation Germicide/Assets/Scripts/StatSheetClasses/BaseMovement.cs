@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseMovement : MonoBehaviour
+public abstract class BaseMovement : MonoBehaviour
 {
 
     [SerializeField] protected AllStats owner;

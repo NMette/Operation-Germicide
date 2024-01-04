@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class PredictiveAim : MonoBehaviour
+public class PredictiveAim : BaseFocusPoint
 {
-
-    [SerializeField] private Rigidbody2D objectToLookAt;
-    [SerializeField] private float rotateTime;
 
     // Update is called once per frame
     void Update()
